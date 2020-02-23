@@ -1,28 +1,24 @@
-def luhn_checksum(card_number):
-    def digits_of(n):
+def luhnCheck(cardNumber):
+    def digits(n):
         return [int(d) for d in str(n)]
-    digits = digits_of(card_number)
-    odd_digits = digits[-1::-2]
-    even_digits = digits[-2::-2]
+    digits1 = digits(cardNumber)
+    oddDigits = digits1[-1::-2]
+    evenDigits = digits1[-2::-2]
     checksum = 0
-    checksum += sum(odd_digits)
-    for d in even_digits:
-        checksum += sum(digits_of(d*2))
+    checksum += sum(oddDigits)
+    for d in evenDigits:
+        checksum += sum(digits(d*2))
     if checksum%10==0:
         if int(str(n)[:1]) == 4:
-            print ("\n Card Type: Visa")
+            print ("Card Type: Visa")
         elif int(str(n)[:2]) == 51 or int(str(n)[:2]) == 52 or int(str(n)[:2]) == 53 or int(str(n)[:2]) == 54 or int(str(n)[:2]) == 55:
-            print ("\n Card Type: MasterCard")
+            print ("Card Type: MasterCard")
     else:
-        print("\n invalid credit card.")
+        print("invalid credit card.")
     return checksum % 10
-    
-def is_luhn_valid(card_number):
-    return luhn_checksum(card_number) == 0
 while True:
     n = input("Incert Credit Card Number:")    
     if len(n) != 16:
         print ("This number has not 16 digits.")    
     else:
-        luhn_checksum(n)
-    break
+        luhnCheck(n)
