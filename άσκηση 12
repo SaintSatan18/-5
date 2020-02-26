@@ -1,0 +1,11 @@
+import datetime
+from calendar import monthrange
+from datetime import strptime
+currentdate=datetime.date.today()
+date_str = input("enter date in format dd/mm/yyyy")
+datetime_obj = datetime.datetime.strptime(date_str, '%d/%m/%Y')
+diff= datetime_obj.date() - currentdate 
+print("Current date ==",currentdate)
+print("entered date ==",datetime_obj.date()) 
+print("remaining Days left  ===",diff)
+monthrange(datetime_obj.year , datetime_obj.month)
